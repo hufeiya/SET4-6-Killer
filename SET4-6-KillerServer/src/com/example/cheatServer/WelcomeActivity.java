@@ -42,8 +42,8 @@ public class WelcomeActivity extends Activity {
 		boolean resault = false;
 			Process p;
 			try {
-				//ping -c 3 -w 100  中  ，-c 是指ping的次数 3是指ping 3次 ，-w 100  以秒为单位指定超时间隔，是指超时时间为100秒 
-				p = Runtime.getRuntime().exec("ping -c 3 -w 100 " + str);
+				//ping -c 3 -w 100  中  ，-c 是指ping的次数 3是指ping 3次 ，-w 3  以秒为单位指定超时间隔，是指超时时间为3秒 
+				p = Runtime.getRuntime().exec("ping -c 3 -w 3 " + str);
 				int status = p.waitFor();
 
 				InputStream input = p.getInputStream();
