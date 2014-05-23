@@ -16,11 +16,19 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="ChatActivity">
+        <activity android:name="WelcomeActivity">
             <intent-filter >
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.example.cheatServer.ChatActivityClient">
+            
+        </activity>
+        <activity 
+            android:name="com.example.cheatServer.ChatActivityServer">
+            
         </activity>
     </application>
 

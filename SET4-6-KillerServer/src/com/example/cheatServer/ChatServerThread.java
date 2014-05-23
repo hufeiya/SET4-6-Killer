@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*; 
 import java.util.*; 
 
-import com.example.cheatServer.ChatActivity.ChatThread;
+import com.example.cheatServer.ChatActivityServer.ChatThread;
 
 public class ChatServerThread extends Thread{
 	public ArrayList<Socket> clients = new ArrayList<Socket>();
