@@ -30,6 +30,7 @@
             android:name="com.example.cheatServer.ChatActivityServer">
             
         </activity>
+        <activity android:name="com.example.cheatServer.ServerSettingsActivity"></activity>
     </application>
 
 </manifest>

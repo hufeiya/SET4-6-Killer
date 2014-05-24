@@ -10,6 +10,7 @@ import java.util.Enumeration;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -19,6 +20,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +44,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 	 boolean typed = false;//已经输出答案
 	 Vibrator vibrator;//输出答案震动
 	 int answerNum = 0;//题号
+	 float sensetivity = 3;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -192,7 +197,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 					}
 				}	
 		}
-		if(ev.values[0] >3 && ! typed)//输出A
+		if(ev.values[0] > sensetivity && ! typed)//输出A
 		{
 			 setTypedToTrue();
 			 String s1 = name.getText().toString();
@@ -209,7 +214,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 					}
 				}	
 		}
-		else if(ev.values[0] <-3 && ! typed)//输出B
+		else if(ev.values[0] < 0 - sensetivity && ! typed)//输出B
 		{
 			setTypedToTrue();
 			String s1 = name.getText().toString();
@@ -226,7 +231,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 				}
 			}
 		}
-		else if(ev.values[1] <-3 && ! typed)//输出C
+		else if(ev.values[1] <0 - sensetivity && ! typed)//输出C
 		{
 			setTypedToTrue();
 			String s1 = name.getText().toString();
@@ -243,7 +248,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 				}
 			}
 		}
-		else if(ev.values[1] > 3 && ! typed)//输出D
+		else if(ev.values[1] > sensetivity && ! typed)//输出D
 		{
 			setTypedToTrue();
 			String s1 = name.getText().toString();
@@ -271,5 +276,37 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 		// TODO Auto-generated method stub
 		System.exit(0);
 		super.onDestroy();
+	}
+	@Override//创建学霸端菜单
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.servermenu, menu);
+		return true;
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.settings:
+			Intent intent = new Intent(this,ServerSettingsActivity.class);
+			intent.putExtra("formerSensetivity", sensetivity);
+			Log.d("fuck", "启动设置前");
+			startActivityForResult(intent, 0x111);
+			break;
+
+		default:
+			break;
+		}
+		return true;
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0x111 && resultCode == 0x111)
+		{
+			Log.d("fuck", "返回参数");
+			Bundle bundle = data.getExtras();
+			sensetivity = bundle.getFloat("newSensetivity");
+			Log.d("fuck", "返回灵敏度，改变它到主界面");
+		}
 	}
 }
