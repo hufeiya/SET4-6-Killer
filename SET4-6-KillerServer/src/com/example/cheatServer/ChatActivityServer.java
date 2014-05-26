@@ -42,6 +42,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 	 SensorManager sensorManager;
 	 Sensor sensor;
 	 boolean typed = false;//已经输出答案
+	 boolean resented = false;//已经输出重发信号
 	 Vibrator vibrator;//输出答案震动
 	 int answerNum = 0;//题号
 	 float sensetivity = 3;
@@ -178,8 +179,13 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 		{
 			typed = false;
 		}
+		//如果重新翻正，则可重新发送
+		if(ev.values[2] > 8)
+		{
+			resented = false;
+		}
 		//把手机翻过了就是重新输入
-		if(ev.values[2] < -4  && ! typed)
+		if(ev.values[2] < -4  && ! resented)
 		{
 			 setTypedToTrue();
 			answerNum = 0;
@@ -196,6 +202,8 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 						e.printStackTrace();
 					}
 				}	
+				resented = true;
+				typed = true;
 		}
 		if(ev.values[0] > sensetivity && ! typed)//输出A
 		{

@@ -49,7 +49,7 @@ public class WelcomeActivity extends Activity {
 			return;
 		} else if( ! isServerConnected())
 		{
-			Toast.makeText(this, "学渣，学霸大人还没开此应用!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "学渣，学霸大人还没进入学霸模式!", Toast.LENGTH_LONG).show();
 			return;
 		}
 			
