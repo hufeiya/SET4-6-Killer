@@ -51,7 +51,8 @@ public class ServerSettingsActivity extends Activity implements OnSeekBarChangeL
 	}
 	public void cancel(View view)
 	{
-		onStop() ;
+		finish();
+		
 	}
 	public void confirm(View view)
 	{
