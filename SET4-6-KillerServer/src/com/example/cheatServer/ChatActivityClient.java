@@ -182,7 +182,8 @@ public class ChatActivityClient extends Activity {
 		case 'D':
 			vibrator.vibrate(pattern[3], -1);
 			break;
-
+		case 'R'://重新发送信号，长振一秒
+			vibrator.vibrate(1000);
 		default:
 			break;
 		}

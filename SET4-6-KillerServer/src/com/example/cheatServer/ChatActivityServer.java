@@ -184,7 +184,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 			 setTypedToTrue();
 			answerNum = 0;
 			 String s1 = name.getText().toString();
-			 String s2 = "---重新发一遍---";
+			 String s2 = "---重新发一遍---R";
 			 String s = s1 + s2 + "\n";
 				if(socket != null)
 				{
