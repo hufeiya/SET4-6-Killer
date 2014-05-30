@@ -4,6 +4,9 @@
         <item android:id="@+id/shake"
             android:title="震动"
             android:checkable="true"></item>
+        <item android:id="@+id/delayShake"
+            android:title="延迟震动"
+            android:checkable="true"></item>
     </group>
     
 

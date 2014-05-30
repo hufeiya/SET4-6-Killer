@@ -58,7 +58,7 @@ public class ChatActivityServer extends Activity implements SensorEventListener{
 		
 		sensorManager = (SensorManager)this.getSystemService(SENSOR_SERVICE);
 		sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_UI);
+		sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
 		vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		new ChatServerThread().start();
 		//4.0之后联网不能写入主线程内
